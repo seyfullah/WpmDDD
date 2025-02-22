@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Wpm.Management.Domain;
 using Wpm.Management.Domain.Entities;
 using Wpm.Management.Domain.ValueObjects;
 
@@ -27,5 +28,37 @@ public static class ManagementDbContextExtensions
         var context = scope.ServiceProvider.GetService<ManagementDbContext>();
         context.Database.EnsureCreated();
         context.Database.CloseConnection();
+    }
+}
+
+public class ManagementRepository : IManagementRepository
+{
+    public ManagementRepository(ManagementDbContext managementDbContext)
+    {
+            
+    }
+    public void Delete(Pet pet)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IEnumerable<Pet> GetAll()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Pet? GetById(Guid id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Insert(Pet pet)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Update(Pet pet)
+    {
+        throw new NotImplementedException();
     }
 }

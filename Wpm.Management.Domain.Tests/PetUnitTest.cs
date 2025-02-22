@@ -5,13 +5,13 @@ using Wpm.Shared.Kernel;
 
 namespace Wpm.Management.Domain.Tests;
 
-public class UnitTest1
+public class PetUnitTest
 {
     [Fact]
     public void Pet_should_be_equal()
     {
         var id = Guid.NewGuid();
-        var breedService = new FakeBreedService();
+        var breedService = new BreedService();
         var breedId = new BreedId(breedService.breeds[0].Id, breedService);
         var pet1 = new Pet(id, "Karabaş", 2, "Beyaz", SexOfPet.Male, breedId);
         var pet2 = new Pet(id, "Beyazkaş", 3, "Sarı", SexOfPet.Female, breedId);
@@ -22,7 +22,7 @@ public class UnitTest1
     public void Pet_should_be_equal_using_operators()
     {
         var id = Guid.NewGuid();
-        var breedService = new FakeBreedService();
+        var breedService = new BreedService();
         var breedId = new BreedId(breedService.breeds[0].Id, breedService);
         var pet1 = new Pet(id, "Karabaş", 2, "Beyaz", SexOfPet.Male, breedId);
         var pet2 = new Pet(id, "Beyazkaş", 3, "Sarı", SexOfPet.Female, breedId);
@@ -34,7 +34,7 @@ public class UnitTest1
     {
         var id = Guid.NewGuid();
         var id2 = Guid.NewGuid();
-        var breedService = new FakeBreedService();
+        var breedService = new BreedService();
         var breedId = new BreedId(breedService.breeds[0].Id, breedService);
         var pet1 = new Pet(id, "Karabaş", 2, "Beyaz", SexOfPet.Male, breedId);
         var pet2 = new Pet(id2, "Beyazkaş", 3, "Sarı", SexOfPet.Female, breedId);
@@ -60,7 +60,7 @@ public class UnitTest1
     [Fact]
     public void BreedId_should_be_valid()
     {
-        var breedService = new FakeBreedService();
+        var breedService = new BreedService();
         var id = breedService.breeds[0].Id;
         var breedId = new BreedId(id, breedService);
         Assert.NotNull(breedId);
@@ -69,7 +69,7 @@ public class UnitTest1
     [Fact]
     public void BreedId_should_not_be_valid()
     {
-        var breedService = new FakeBreedService();
+        var breedService = new BreedService();
         var id = Guid.NewGuid();
         Assert.Throws<ArgumentException>(() =>
         {
@@ -80,7 +80,7 @@ public class UnitTest1
     [Fact]
     public void WeightClass_should_be_ideal()
     {
-        var breedService = new FakeBreedService();
+        var breedService = new BreedService();
         var breedId = new BreedId(breedService.breeds[0].Id, breedService);
         var pet1 = new Pet(Guid.NewGuid(), "Karabaş", 2, "Beyaz", SexOfPet.Male, breedId);
         //pet1.SetWeight(new Weight(11), breedService);
@@ -91,7 +91,7 @@ public class UnitTest1
     [Fact]
     public void WeightClass_should_be_overweight()
     {
-        var breedService = new FakeBreedService();
+        var breedService = new BreedService();
         var breedId = new BreedId(breedService.breeds[0].Id, breedService);
         var pet1 = new Pet(Guid.NewGuid(), "Karabaş", 2, "Beyaz", SexOfPet.Male, breedId);
         pet1.SetWeight(110, breedService);
@@ -101,7 +101,7 @@ public class UnitTest1
     [Fact]
     public void WeightClass_should_be_underweight()
     {
-        var breedService = new FakeBreedService();
+        var breedService = new BreedService();
         var breedId = new BreedId(breedService.breeds[0].Id, breedService);
         var pet1 = new Pet(Guid.NewGuid(), "Karabaş", 2, "Beyaz", SexOfPet.Male, breedId);
         pet1.SetWeight(5, breedService);
