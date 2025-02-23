@@ -1,10 +1,17 @@
-﻿namespace Wpm.Clinic.Domain.ValueObjects;
+﻿using Wpm.Shared.Kernel;
 
-public record VitalSign
+namespace Wpm.Clinic.Domain.ValueObjects;
+
+public class VitalSign : Entity
 {
-    public VitalSign(decimal temprature, int heartRate, int respiratoryRate)
+    public VitalSign()
     {
-        ReadingDateTime = DateTime.UtcNow;
+            
+    }
+    public VitalSign(DateTime readingDateTime, decimal temprature, int heartRate, int respiratoryRate)
+    {
+        Id = Guid.NewGuid();
+        ReadingDateTime = readingDateTime;
         Temprature = temprature;
         HeartRate = heartRate;
         RespiratoryRate = respiratoryRate;

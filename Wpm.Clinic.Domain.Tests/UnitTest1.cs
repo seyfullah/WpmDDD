@@ -68,7 +68,7 @@ public class UnitTest1
     {
         var c = new Consultation(Guid.NewGuid());
         var drugId = new DrugId(Guid.NewGuid());
-        IEnumerable<VitalSign> vitalSigns = [new VitalSign(38, 100, 120)];
+        IEnumerable<VitalSign> vitalSigns = [new VitalSign(DateTime.UtcNow, 38, 100, 120)];
         c.RegisterVitalSigns(vitalSigns);
 #pragma warning disable xUnit2013 // Do not use equality check to check for collection size.
         Assert.Equal(1, c.VitalSignReadings.Count);
